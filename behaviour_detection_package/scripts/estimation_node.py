@@ -7,8 +7,6 @@ from std_msgs.msg import Float32
 
 
 class estimation_error_class():
-    # TODO add new msg type (list of two floats) and pass the estimation
-    # errors as floats ins the list
 
     def __init__(self, topic="/teleop/cmd_vel"):
         print("INITIALISING NODE -> /sampling_node")
@@ -22,14 +20,10 @@ class estimation_error_class():
         self.lin_error_history = []
 
         self.topic = topic
-        self.list = [None]*3
-        self.cmd_msg_ang = 0
-        self.cmd_msg_lin = 0
+        self.cmd_msg_ang = 0.0
+        self.cmd_msg_lin = 0.0
         self.sampled_ang_msg_list = [0]*3
         self.sampled_lin_msg_list = [0]*3
-
-        self.pub_alpha = rospy.Publisher(
-            "alpha", Float32, queue_size=1)
 
         self.pub_ang = rospy.Publisher(
             "estimation_error_ang", Float32, queue_size=1)
@@ -45,11 +39,10 @@ class estimation_error_class():
         self.cmd_msg_lin = data.linear.x
 
     def calc_average_estimation_error(self, event=None):
-        # TODO create function to calculate the moving average and call it here.
-        """Function that averages 3 (counter<3) topic_msg. Then,
+        """Function that averages 3 topic_msg. Then,
            saves the average in sampled_message_list which
-           in turn is used to calculate the estimation_model output
-           and the estimation_error and then publishes it.
+           in turn is used to calculate the estimation_model output,
+           the estimation_error and then publishes it.
 
         Args:
             event ([type], optional): [description]. Defaults to None.
@@ -81,12 +74,11 @@ class estimation_error_class():
             self.sampled_ang_msg_list[2] = self.sampled_ang_msg_list[1]
             self.sampled_ang_msg_list[1] = self.sampled_ang_msg_list[0]
             self.sampled_ang_msg_list[0] = average_ang_msg
-
             self.sampled_lin_msg_list[2] = self.sampled_lin_msg_list[1]
             self.sampled_lin_msg_list[1] = self.sampled_lin_msg_list[0]
             self.sampled_lin_msg_list[0] = average_lin_msg
 
-            # Uncomment to print the sampling of angular data
+            # # Uncomment to print the sampling of angular data
             # print(ang_msg, self.ang_temp_data, average_ang_msg,
             #       self.sampled_ang_msg_list)
 
@@ -100,15 +92,19 @@ class estimation_error_class():
             if lin_error == -0.0:
                 lin_error = 0.0
 
+            # TODO add new ros msg type (list of two floats) and publish
+            #  the estimation errors as a list of
             self.pub_ang.publish(ang_error)
             self.ang_error_history.append(ang_error)
 
             self.pub_lin.publish(lin_error)
             self.lin_error_history.append(lin_error)
 
-            # Uncomment to print the error calculation
-            # print(lin_msg, self.estimation_model(
+            # # Uncomment to print the error calculation
+            # print("Linear real, estimation and error: ",lin_msg, self.estimation_model(
             #     self.sampled_lin_msg_list), lin_error)
+            # print("Angular real, estimation and error: ",ang_msg, self.estimation_model(
+            #     self.sampled_ang_msg_list), ang_error)
 
             self.counter = 0
             self.ang_temp_data = []
