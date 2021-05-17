@@ -32,7 +32,7 @@ Finaly, the effects of a Warning And Indication System (WAIS) are presented. WAI
 
 > The simulation environment used in this work was developed with ROS. The code us split into three parts, the entropy calculation, the DPU and WAIS. The behaviour_detection_package is comprised of estimation_error_node.py and entropy_node.py. The former python file is handling the estimation model and the estimation errors, while the latter handles the entropy calculation, the DPU and the WAIS.
 
-![](result_images/my_diagram2v4.png)
+![](result_images/my_diagram2v4.jpg)
 
 All source code used to generate the results and figures in the paper are in
 the `/behaviour_detection_package/scripts` folder. The experiment results might slightly vary from the ones presented in the paper, due to the nature of the experiments. Human participants might present different levels of workload during operation and during secondary tasks.
