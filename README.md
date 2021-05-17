@@ -12,6 +12,21 @@ Finaly, the effects of a Warning And Indication System (WAIS) are presented. WAI
 
 > This paper addresses the problem of the human operator cognitive workload estimation while controlling a robot. Being capable of assessing, in real-time, the elevated operator workload could help prevent calamitous events from occurring. This estimation could enable an AI to make informed decisions to assist or advise the operator, in an advanced human-robot interaction framework. We propose a method, named Fessonia, for real-time cognitive workload estimation, from multiple parameters of an operator's driving behaviour, via the use of behavioural entropy. Fessonia is comprised of: a method to calculate the entropy (i.e. unpredictability) of the operator driving behaviour profile; the Driver Profile Update (DPU) algorithm which adapts the entropy calculations to the evolving driving profile of individual operators; and a Warning And Indication System (WAIS) that uses workload estimations to issue advices to the operator. Fessonia is evaluated in a robot teleoperation scenario that incorporated cognitively demanding secondary tasks to induce varying degrees of workload. The results demonstrate the ability of Fessonia to estimate different levels of imposed workload. Additionally, it is demonstrated that our approach is able to detect and adapt to the evolving driving profile of the different operators. Lastly, based on data obtained, a decrease in entropy is observed when a warning indication is issued, suggesting a more attentive approach focused on the primary navigation task.
 
+## Results
+### Entropy
+| Participants and secondary task trial portions | Baseline trial portion |        | Low workload trial portion |        | Medium workload trial portion |        | High workload trial portion |        |
+|------------------------------------------------|:----------------------:|:------:|:--------------------------:|:------:|:-----------------------------:|:------:|:---------------------------:|:------:|
+|                                                |            M           |   SD   |              M             |   SD   |               M               |   SD   |              M              |   SD   |
+| Participant 1                                  |         0.1375         | 0.1298 |           0.1946           | 0.1204 |             0.3493            | 0.1184 |            0.4441           | 0.1051 |
+| Participant 2                                  |         0.1641         | 0.1319 |           0.2238           | 0.1279 |             0.3501            | 0.1201 |            0.4918           | 0.1174 |
+| Participant 3                                  |         0.1407         | 0.1346 |           0.1993           | 0.1308 |             0.3418            | 0.1247 |            0.4248           | 0.1091 |
+| Total                                          |         0.1474         | 0.1321 |           0.2059           | 0.1264 |             0.3471            | 0.1211 |            0.4546           | 0.1105 |
+
+### Driver Profile Update capabilityof detecting adapting operator profile 
+![](images/DPU.png)
+
+### Warning And Indication System results on entropy
+![](images/indicator2.png)
 
 ## Software implementation
 
