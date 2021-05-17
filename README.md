@@ -23,16 +23,16 @@ Finaly, the effects of a Warning And Indication System (WAIS) are presented. WAI
 | Total                                          |         0.1474         | 0.1321 |           0.2059           | 0.1264 |             0.3471            | 0.1211 |            0.4546           | 0.1105 |
 
 ### Driver Profile Update capabilityof detecting adapting operator profile 
-![](images/DPU.png)
+![](result_images/DPU.png)
 
 ### Warning And Indication System results on entropy
-![](images/indicator2.png)
+![](result_images/indicator2.png)
 
 ## Software implementation
 
 > The simulation environment used in this work was developed with ROS. The code us split into three parts, the entropy calculation, the DPU and WAIS. The behaviour_detection_package is comprised of estimation_error_node.py and entropy_node.py. The former python file is handling the estimation model and the estimation errors, while the latter handles the entropy calculation, the DPU and the WAIS.
 
-![](images/my_diagram2v4.png)
+![](result_images/my_diagram2v4.png)
 
 All source code used to generate the results and figures in the paper are in
 the `/behaviour_detection_package/scripts` folder. The experiment results might slightly vary from the ones presented in the paper, due to the nature of the experiments. Human participants might present different levels of workload during operation and during secondary tasks.
@@ -61,7 +61,7 @@ In order to install all the dependencies of the packages, go to the top director
 In order to run the simulation environment (with the GUI of the operator) and the entropy scripts execute:
 `roslaunch experiments_launch entropy_world.launch`
  
-![](images/guiv2.png)
+![](result_images/guiv2.png)
 
 
 This experiment uses a joystick to navigate the robot. The default input device name used in the entropy_world.launch file is js1 and a playstation 4 joystick was used for the experiments. If using a ps4 joystick install 
