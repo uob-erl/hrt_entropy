@@ -123,7 +123,7 @@ class entropy_calc_topic():
         entropy_lin = sum([-val*math.log(val, 9)
                            for val in frequencies_lin if val != 0])
 
-        self.entropy = 0.7*entropy_ang + 0.3*entropy_lin
+        self.entropy = 1.0*entropy_ang + 0.0*entropy_lin
         self.pup_entropy.publish(self.entropy)
 
         if len(self.entropy_history) > 100:
@@ -184,7 +184,7 @@ if __name__ == "__main__":
         # The rospy.Timer is used for ansychronous execution
         rospy.Timer(rospy.Duration(1.0 / (1/duration_of_entropy_calc)),
                     node.calculate_entropy)
-        rospy.Timer(rospy.Duration(1.0/1.0), node.wais)
+        # rospy.Timer(rospy.Duration(1.0/1.0), node.wais)
         # rospy.Timer(rospy.Duration(15.0/1.0), node.dcu_node)
         node.spin()
 
