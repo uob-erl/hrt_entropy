@@ -1,6 +1,0 @@
-[submodule "husky"]
-	path = husky
-	url = https://github.com/uob-erl/husky.git
-[submodule "fuzzy_mi_controller"]
-	path = fuzzy_mi_controller
-	url = https://github.com/uob-erl/fuzzy_mi_controller.git
